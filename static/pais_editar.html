@@ -1,0 +1,26 @@
+<h1>Editar Pais</h1>
+
+<form class="form-horizontal col-lg-6" method=post action=/pais/actualizar>
+    
+    <div class="form-group">
+      <label for="denominacion" class="col-lg-2 control-label">Pais</label>
+      <div class="col-lg-9">
+        <input class="form-control" id="denominacion" name="denominacion"  
+                type="text" value="{denominacion}">
+      </div>
+    </div>
+    
+    <input type=hidden name=pais_id value="{pais_id}" >
+    
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </div>     
+    
+</form>
+
+
+
+

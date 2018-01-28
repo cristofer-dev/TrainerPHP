@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-8">
+        <h1>Listado de Productos</h1>
+   </div>
+   <div class="col-md-4">
+            <a href="/producto/agregar" class="btn btn-primary">
+                Agregar Nuevo Producto</a>
+   </div>
+</div>  
+
+<table id="tbl_productos" class="table table-hover table-bordered table-striped 
+table-responsive table-condensed">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Editar</th>
+            <th>Detalle</th>
+            <th>precio</th>            
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+
+    <!--fila-->
+    <tr>
+        <td>{producto_id}</td>
+        <td><a href="/producto/editar/{producto_id}">Editar</a></td>
+        <td>{denominacion}</td>
+        <td>{precio}</td> 
+        <th><a href="/producto/eliminar/{producto_id}"><i class="fa fa-trash"></i></a</th>
+    </tr>
+    <!--fila-->
+</table>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#tbl_productos').dataTable({
+            language: {
+                url: '/static/json/dataTable.languaje.json'
+            },
+            "search": {
+                "search": ""
+            },
+            "order": [0, "desc"],
+            "pageLength": 100
+        });
+    } );
+</script>

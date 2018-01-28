@@ -1,0 +1,173 @@
+<div class="portlet light bordered">
+
+    <div class="portlet-body form">
+
+        <!--<div class="alert alert-success alert-dismissible" >-->
+            <!--<button type="button" class="close" data-dismiss="alert"-->
+                    <!--aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>-->
+            <!--El producto ha sido agregado con éxito-->
+        <!--</div>-->
+
+        <!-- BEGIN FORM-->
+        <form action="/productos/guardar/" class="form-horizontal" method="post"
+        id="registrarPedido" enctype="multipart/form-data">
+            <div class="form-body">
+                <h3 class="form-section">Información del producto</h3>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group $err_codigo">
+                            <label class="control-label col-md-3">Código</label>
+
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="$err_icon_codigo" $leyenda="El código no puede estar en blanco"
+                                            $duplicado="El codigo no puede estar duplicado"></i>
+                                    <input type="text" name="codigo" value="$codigo" class="form-control text-uppercase"
+                                           placeholder="3-13-A02-01-08" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group $err_denominacion">
+                            <label class="control-label col-md-3">Denominación</label>
+
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="$err_icon_denominacion"
+                                       data-original-title="Campo obligatorio, minimo 6 caracteres "></i>
+                                    <input type="text" name="denominacion" value="$denominacion"
+                                           class="form-control text-uppercase" placeholder="GORRA CAFE COSEPRI"
+                                           required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group $err_talla">
+                            <label class="control-label col-md-6">Talla</label>
+
+                            <div class="col-md-6">
+                                <div class="input-icon right">
+                                    <i class="$err_icon_talla"
+                                       data-original-title="Campo obligatorio, son solo dos digitos"></i>
+                                    <input type="text" name="talla" value="$talla" class="form-control text-uppercase"
+                                           placeholder="32, 34 etc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-3">
+                        <div class="form-group $err_precio">
+                            <label class="control-label col-md-6">Precio</label>
+
+                            <div class="col-md-6">
+                                <div class="input-icon right">
+                                    <i class="$err_icon_precio"
+                                       data-original-title="Campo obligatorio, asegurate de haber introducido solo numeros"></i>
+                                    <input type="text" name="precio" value="$precio" class="form-control text-uppercase"
+                                           placeholder="$100.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--<div class="row">-->
+                    <!--<div class="col-md-6">-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label col-md-6">Imagen</label>-->
+
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="input-icon right">-->
+                                    <!--<i class="fa $err_icon_talla tooltips"-->
+                                       <!--data-original-title="Campo obligatorio, son dos digitos"></i>-->
+                                    <!--<input type="file" name="imagen">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+
+
+                <div class="form-actions">
+                    <div class="btn-set pull-left">
+                        <button name="guardar" value="agregar" type="submit" id="submit1"
+                                class="btn blue" onclick="document.getElementById('submit2').disabled = true;">Guardar
+                            y Agregar Nuevo <i class="fa fa-plus"></i>
+                        </button>
+                        <button name="guardar" value="listar" type="submit" id="submit2"
+                                class="btn green" onclick="document.getElementById('submit1').disabled = true;">Guardar
+                            y Listar <i class="fa fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+<script src="/static/assets/global/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
+<script src="/static/assets/global/plugins/jquery-validation/js/localization/messages_es.min.js"
+        type="text/javascript"></script>
+<!-- END FORM-->
+<script type="text/javascript">
+    $('#registrarPedido').validate({
+        errorElement: 'span', //default input error message container
+        errorClass: 'help-block', // default input error message class
+        focusInvalid: true, // do not focus the last invalid input
+        ignore: "",
+        rules: {
+            codigo: {
+                required: true
+            },
+            denominacion: {
+                required: true
+            },
+            talla:{
+                required: true
+            },
+            precio:{
+                required: true
+            }
+        },
+
+        messages: { // custom messages for radio buttons and checkboxes
+
+        },
+
+        invalidHandler: function (event, validator) { //display error alert on form submit
+
+        },
+
+        highlight: function (element) { // hightlight error inputs
+            $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+        },
+
+        success: function (label) {
+            label.closest('.form-group').removeClass('has-error');
+            label.remove();
+        },
+
+        errorPlacement: function (error, element) {
+            if (element.closest('.input-icon').size() === 1) {
+                error.insertAfter(element.closest('.input-icon'));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+</script>

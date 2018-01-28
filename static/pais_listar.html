@@ -1,0 +1,34 @@
+<h1>Listado de Países</h1>
+<table id="tbl_productos" class="table table-hover table-bordered table-striped 
+table-responsive display hover table-condensed ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>País</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+
+    <!--fila-->
+    <tr>
+        <td>{pais_id}</td>
+        <td><a href="/pais/ver/{pais_id}">{denominacion}</a></td>
+        <td><a href="/pais/eliminar/{pais_id}"><i class="fa fa-trash"></i></a></td>
+    </tr>
+    <!--fila-->
+</table>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#tbl_productos').dataTable({
+            language: {
+                url: '/static/json/dataTable.languaje.json'
+            },
+            "search": {
+                "search": ""
+            },
+            "order": [0, "desc"],
+            "pageLength": 100
+        });
+    } );
+</script>
